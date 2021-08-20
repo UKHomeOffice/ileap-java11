@@ -9,6 +9,16 @@ platform:
   arch: amd64
 
 steps:
+- name: build_docker_image
+  pull: if-not-exists
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  commands:
+  - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
+  - docker build -t ileap-java11:$${DRONE_COMMIT_SHA} .
+  when:
+    event:
+    - push
+    - tag
 
 - name: image_to_quay
   pull: if-not-exists
