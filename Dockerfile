@@ -7,6 +7,11 @@ RUN apk update && \
     apk upgrade --available && \
     sync
 
+ONBUILD RUN apk update && \
+    apk add --upgrade apk-tools && \
+    apk upgrade --available --ignore openjdk11 openjdk11-jmods openjdk11-demos openjdk11-doc java-common java-cacerts openjdk11-jre-headless openjdk11-jre openjdk11-jdk && \
+    sync
+
 # Install OpenJDK 11.0.12
 RUN apk --no-cache add openjdk11 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV HOME /root
