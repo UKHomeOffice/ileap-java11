@@ -25,6 +25,3 @@ RUN mkdir -p /scripts
 RUN addgroup -g 1000 -S ileap && \
     adduser -u 1000 -G ileap -h /build -s /sbin/nologin -S ileap && \
     chmod 755 /build
-
-WORKDIR /scripts
-COPY ./scripts /scripts
