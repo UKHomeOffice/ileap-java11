@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SONAR_RESULT="target/sonar/report-task.txt"
 SONAR_SERVER="https://sonarqube.digital.homeoffice.gov.uk"
